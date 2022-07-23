@@ -1,12 +1,12 @@
 # Machine Learning with Python Cookbook 学习笔记
 
-10205101483 袁野
+
 
 ### 前言
 
 - 本笔记是针对人工智能典型算法的课程中Machine Learning with Python Cookbook的学习笔记
 - 学习的实战代码都放在代码压缩包中
-- 实战代码的运行环境是**python3.9   numpy 1.23.1** **anaconda 4.12.0 **
+- 实战代码的运行环境是**python3.9   numpy 1.23.1 anaconda 4.12.0 **
 - 上一章：
 - 代码仓库
   - Github:[yy6768/Machine-Learning-with-Python-Cookbook-notebook: 人工智能典型算法笔记 (github.com)](https://github.com/yy6768/Machine-Learning-with-Python-Cookbook-notebook)
@@ -1060,9 +1060,7 @@ print(np.random.uniform(1.0, 2.0, 3))
 
 
 
-## Chapter 2
-
-### Loading Data
+## Chapter 2 Loading Data
 
 #### 2.0 Introduction
 
@@ -3589,8 +3587,6 @@ print(sent_tokenize(string))
 
 仍然需要NLTK库
 
-
-
 stopWorkds.py
 
 ```
@@ -5534,7 +5530,7 @@ print("Reduced number of features:", features_pca.shape[1])
 
   - 那么最后我们的问题就化简成了：**将一组 N 维向量降为 K 维，其目标是选择 K 个单位正交基，使得原始数据变换到这组基上后，各变量两两间协方差为 0，而变量方差则尽可能大（在正交的约束下，取最大的 K 个方差）。**
   - 根据我们的优化条件，**我们需要将除对角线外的其它元素化为 0，并且在对角线上将元素按大小从上到下排列（变量方差尽可能大）**
-  - 原数据协方差矩阵C和转换后的协方差矩阵D满足：
+  - **矩阵对角化**：原数据协方差矩阵C和转换后的协方差矩阵D满足：
   - ![[公式]](https://www.zhihu.com/equation?tex=%5Cbegin%7Baligned%7D++D+%26+%3D++%5Cfrac%7B1%7D%7Bm%7DYY%5ET+%5C%5C++%26+%3D+%5Cfrac%7B1%7D%7Bm%7D%28PX%29%28PX%29%5ET+%5C%5C+%26+%3D+%5Cfrac%7B1%7D%7Bm%7DPXX%5ETP%5ET+%5C%5C++%26+%3D+P%28%5Cfrac%7B1%7D%7Bm%7DXX%5ET%29P%5ET+%5C%5C++%26+%3D+PCP%5ET++%5Cend%7Baligned%7D++%5C%5C)
 
   （P是一组基，X是原来的矩阵，Y是转换后的矩阵）
@@ -5734,7 +5730,7 @@ print(select_n_components(lda_var_ratios, 0.99))
 
 NMF.py
 
-```
+```python
 # Load libraries
 from sklearn.decomposition import NMF
 from sklearn import datasets
@@ -6086,7 +6082,7 @@ print("Reduced number of features:", features_kbest.shape[1])
 
 recursiveEliminating.py
 
-```
+```python
 # 加载库
 import warnings
 from sklearn.datasets import make_regression
@@ -6424,7 +6420,7 @@ print(classifier.score(features_test, target_test))
 
 - 给定一个已经训练好的二分类模型，评价它的质量
 
-### Solution:二分类器评价原理
+#### Solution:二分类器评价原理
 
 - 使用 scikit-learn 的 cross_val_score 进行交叉验证，同时使用打分参数定义多个性能指标之一，包括准确度、精确度、召回率和 F1。
 - 准确性是一种常见的性能指标。 它只是正确预测的观察值的比例：
@@ -6475,7 +6471,7 @@ print(cross_val_score(logit, X, y, scoring="accuracy"))
 
     
 
-  ![image-20220721231443766](C:\Users\12587\AppData\Roaming\Typora\typora-user-images\image-20220721231443766.png)
+  ![image-20220721231443766](http://typora-yy.oss-cn-hangzhou.aliyuncs.com/img/image-20220721231443766.png)
 
 - recall:预测为阳性的结果在真正为阳性的比率。
 
@@ -6549,7 +6545,7 @@ print(cross_val_score(logit, X, y, scoring="accuracy"))
 
 rob_curveExample.py
 
-```
+```python
 # Load libraries
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_classification
@@ -7654,3 +7650,4 @@ print(cross_val_score(gridsearch, features, target).mean())
   生成的结果可以看到内部的CV又训练了5次100的模型
 
   - 我们可以从结果中看出，cross_val_score需要进行五折交叉检验（原书为旧版本scikit-learn,默认为3折)，然后内层的每次需要进行5折的交叉检验，所以嵌套的交叉检验总共要进行20*5\*5=500次训练
+
