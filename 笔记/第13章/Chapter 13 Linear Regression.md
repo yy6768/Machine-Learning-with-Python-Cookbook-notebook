@@ -220,7 +220,7 @@ model = regression.fit(features_polynomial, target)
 
 - 收缩惩罚（正则化）学习模型的损失函数与RSS相似，但是希望线性模型的系数可以尽可能的少。收缩惩罚的名称表示希望将模型缩小
 
-- 有两种常用的正则化相信模型：岭回归和lasso回归。它们唯一的不同就是正则项的不同：
+- 有两种常用的正则化线性模型：岭回归和lasso回归。它们唯一的不同就是正则项的不同：
 
   - Ridge regression的损失函数：$RSS + \alpha\Sigma_{j=1}^p \hat\beta_j^2$
 
